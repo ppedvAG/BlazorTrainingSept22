@@ -1,0 +1,23 @@
+﻿<h3>attribute</h3>
+<input @bind="variable" @ref="input1" />
+
+<button @onclick="func1" @onkeydown="key1" >func</button>
+
+<Component @ref="comp1"></Component>
+@variable
+
+@code {
+    string variable;
+    ElementReference input1;
+    Component comp1;
+    void func1()
+    {
+        input1.FocusAsync();
+
+    }
+
+    void key1(KeyboardEventArgs e)
+    {
+       
+    }
+}
