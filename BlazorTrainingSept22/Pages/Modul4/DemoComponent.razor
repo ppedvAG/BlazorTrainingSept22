@@ -1,0 +1,13 @@
+﻿@page "/demo"
+
+<h3>DemoComponent</h3>
+<button @onclick="click">click</button>
+@code {
+   // [Inject]
+    public Demo d { get; set; }
+    void click()
+    {
+       // d = new Demo();
+        var http = d.Http();
+    }
+}

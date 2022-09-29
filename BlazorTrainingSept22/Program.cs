@@ -17,6 +17,7 @@ namespace BlazorTrainingSept22
             builder.Services.AddSingleton<WeatherForecastService>();
             builder.Services.AddSingleton<ChatVM>();
             builder.Services.AddHttpClient();
+            builder.Services.AddTransient<Demo>();
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.

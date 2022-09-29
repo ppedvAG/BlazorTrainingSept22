@@ -14,6 +14,7 @@
             <li class="list-group-item">
                 @item.title
             </li>
+          
         </Virtualize>
 
     }
@@ -26,4 +27,5 @@
         Liste = await client.GetFromJsonAsync<List<Todos>>("https://jsonplaceholder.typicode.com/todos");
 
     }
+
 }
