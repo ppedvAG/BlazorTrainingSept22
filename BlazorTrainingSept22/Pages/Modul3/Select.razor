@@ -1,13 +1,14 @@
 ﻿@page "/select"
 <h3>Select</h3>
-<select  >
+<select value="@test" @onchange="((ChangeEventArgs e)=>test=e.Value.ToString())" >
     @foreach (var item in Liste)
     {
         <option value="@item.Id" >@item.Name</option>
     }
 </select>
+@test
 @code {
-
+    string test;
     List<Person> Liste = new List<Person>() { new Person() { Id = 1, Name = "hannes" }, new Person() { Id = 2, Name = "franz" } };
     void select(EventArgs e )
     {
