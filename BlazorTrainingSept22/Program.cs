@@ -1,4 +1,5 @@
 using BlazorTrainingSept22.Data;
+using BlazorTrainingSept22.Pages.Modul4;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Web;
 
@@ -14,6 +15,7 @@ namespace BlazorTrainingSept22
             builder.Services.AddRazorPages();
             builder.Services.AddServerSideBlazor();
             builder.Services.AddSingleton<WeatherForecastService>();
+            builder.Services.AddSingleton<ChatVM>();
 
             var app = builder.Build();
 
