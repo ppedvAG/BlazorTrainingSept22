@@ -1,4 +1,4 @@
-﻿@page "/todo"
+﻿@page "/todoV"
 @inject IHttpClientFactory http
 <h3>ToDoView</h3>
 <button class="btn btn-outline-danger" @onclick="laden">laden</button>
@@ -9,13 +9,12 @@
     }
     else
     {
-      @foreach (var item in Liste)
-        {
+  
+                <Virtualize Items="Liste" OverscanCount="5" ItemSize="25" Context="item">
             <li class="list-group-item">
                 @item.title
             </li>
-        }
-
+        </Virtualize>
 
     }
 </ul>
@@ -24,7 +23,7 @@
     async Task laden()
     {
         var client = http.CreateClient();
-        Liste = await client.GetFromJsonAsync<List<Todos>>("https://jsonplaceholder.typicode.com/todos");
+        Liste =await client.GetFromJsonAsync<List<Todos>>("https://jsonplaceholder.typicode.com/todos");
 
     }
 }
