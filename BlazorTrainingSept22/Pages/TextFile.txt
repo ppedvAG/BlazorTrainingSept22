@@ -1,1 +1,6 @@
 ﻿
+REST -> URL ist der Status
+
+Kunden ->alle Kunden (limit 200)
+Kunden/1
+Kunden/ALFKI/rechnung/0920
