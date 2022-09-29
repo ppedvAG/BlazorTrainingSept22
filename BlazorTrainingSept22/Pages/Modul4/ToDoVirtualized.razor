@@ -9,8 +9,8 @@
     }
     else
     {
-  
-                <Virtualize Items="Liste" OverscanCount="5" ItemSize="25" Context="item">
+
+        <Virtualize Items="Liste" OverscanCount="5" ItemSize="25" Context="item">
             <li class="list-group-item">
                 @item.title
             </li>
@@ -23,7 +23,7 @@
     async Task laden()
     {
         var client = http.CreateClient();
-        Liste =await client.GetFromJsonAsync<List<Todos>>("https://jsonplaceholder.typicode.com/todos");
+        Liste = await client.GetFromJsonAsync<List<Todos>>("https://jsonplaceholder.typicode.com/todos");
 
     }
 }
