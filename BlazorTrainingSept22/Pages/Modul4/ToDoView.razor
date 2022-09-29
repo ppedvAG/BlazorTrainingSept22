@@ -1,0 +1,29 @@
+﻿@page "/todo"
+@inject IHttpClientFactory http
+<h3>ToDoView</h3>
+<button class="btn btn-outline-danger" @onclick="laden">laden</button>
+<ul class="list-group">
+    @if (Liste is null)
+    {
+        <li class="list-group-item list-group-item-danger">laden drücken</li>
+    }
+    else
+    {
+        @foreach (var item in Liste)
+        {
+            <li class="list-group-item">
+                @item.title
+            </li>
+        }
+
+    }
+</ul>
+@code {
+    List<Todos> Liste;
+    async Task laden()
+    {
+        var client = http.CreateClient();
+        Liste =await client.GetFromJsonAsync<List<Todos>>("https://jsonplaceholder.typicode.com/todos");
+
+    }
+}
