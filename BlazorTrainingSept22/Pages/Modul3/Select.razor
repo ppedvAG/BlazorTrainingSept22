@@ -1,0 +1,16 @@
+﻿@page "/select"
+<h3>Select</h3>
+<select  >
+    @foreach (var item in Liste)
+    {
+        <option value="@item.Id" >@item.Name</option>
+    }
+</select>
+@code {
+
+    List<Person> Liste = new List<Person>() { new Person() { Id = 1, Name = "hannes" }, new Person() { Id = 2, Name = "franz" } };
+    void select(EventArgs e )
+    {
+        //var p = Liste.Where(x => x.Id ==);
+    }
+}
