@@ -1,0 +1,37 @@
+﻿@if (IsShow)
+{
+<div class="modal  show"  tabindex="-1" 
+ style="display: block;">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" >@Titel</h5>
+        <button type="button" class="btn-close" @onclick="Show"></button>
+      </div>
+      <div class="modal-body">
+       @ChildContent
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary"  @onclick="Show">Close</button>
+        <button type="button" class="btn btn-primary" @onclick="()=>OnSave.InvokeAsync()">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal-backdrop  show"></div>
+}
+@code {
+    [Parameter]
+    public EventCallback OnSave { get; set; }
+
+    [Parameter]
+    public string Titel { get; set; }
+    [Parameter]
+    public RenderFragment ChildContent { get; set; }
+    bool IsShow;
+    public void Show()
+    {
+        IsShow = !IsShow;
+        StateHasChanged();
+    }
+}
