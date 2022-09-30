@@ -5,7 +5,7 @@
     <div class="mb-3 row">
         <label class="col-sm-2 col-form-label">Name</label>
         <div class="col-sm-10">
-            <InputText @bind-Value="_person.Name" class="form-control"></InputText>
+            <InputTextOnchange @bind-Value="_person.Name" class="form-control" width="100%"></InputTextOnchange>
             <ValidationMessage For="()=>_person.Name"></ValidationMessage>
         </div>
     </div>
