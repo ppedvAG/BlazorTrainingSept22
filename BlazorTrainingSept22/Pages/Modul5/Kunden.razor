@@ -1,0 +1,29 @@
+﻿@page "/kundenorders"
+@using Models
+@using Microsoft.EntityFrameworkCore
+@inject NorthwindContext db
+<h3>Kunden</h3>
+<input @bind="Eingabe" @bind:event="oninput" />
+<ul>
+    @foreach (var item in db.Customers.Include(x=>x.Orders).Where(x => x.CompanyName.Contains(Eingabe)))
+    {
+        <li>
+           <a href="/kundendetails/@item.CustomerId">@item.CompanyName</a> 
+            <ul>
+                @foreach (var itemo in item.Orders)
+                {
+                    <li>@itemo.OrderDate @itemo.ShipCountry</li>
+
+                }
+            </ul>
+        </li>
+    }
+</ul>
+@code {
+    string Eingabe;
+    List<Customer> Liste;
+    protected override void OnInitialized()
+    {
+        Liste = db.Customers.Include(x=>x.Orders).ToList();
+    }
+}
