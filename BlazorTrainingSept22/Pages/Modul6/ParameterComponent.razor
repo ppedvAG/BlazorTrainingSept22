@@ -1,0 +1,27 @@
+﻿<h3 @attributes="Liste" >@Titel</h3>
+<ul>
+@foreach (var item in Liste)
+{
+   <li >@item.Key @item.Value</li> 
+}</ul>
+<div style="color:@farbe">
+    @ChildContent
+</div>
+@Anzahl
+@code {
+    [Parameter]
+    public string Titel { get; set; }
+    [Parameter]
+    [EditorRequired]
+    public string Name { get; set; }
+    [Parameter(CaptureUnmatchedValues =true)]
+    public Dictionary<string,object> Liste { get; set; }
+    [Parameter]
+    public RenderFragment ChildContent { get; set; }
+
+    [CascadingParameter]
+    public string farbe { get; set; }
+
+    [CascadingParameter(Name="Universum")]
+    public int Anzahl { get; set; }
+}

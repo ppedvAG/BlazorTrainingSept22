@@ -1,0 +1,13 @@
+﻿@page "/uc"
+<h3>UseParameterComponent</h3>
+<CascadingValue Value="@("red")">
+    <CascadingValue Value="42" Name="Universum" >
+        <ParameterComponent Titel="Hallo Welt" hannes="blue" Name="test">
+            <input @bind-value="Eingabe" />
+            <p>prosa aussenrum</p>
+        </ParameterComponent>
+    </CascadingValue>
+</CascadingValue>
+@code {
+    string Eingabe;
+}
