@@ -28,16 +28,17 @@
 </EditForm>
 
 @code {
-    [Parameter]
-    public int id { get; set; }
-    Person _person = new Person();
-    EditContext _edx;
-    void save()
-    {
+        [Parameter]
+        public int id { get; set; }
+        Person _person = new Person();
+        EditContext _edx;
+        void save()
+        {
 
-    }
+        }
     protected override void OnInitialized()
     {
         _edx=new EditContext(_person);
+        _edx.SetFieldCssClassProvider(new BootstrapFieldCSSClassFixprovider());
     }
 }
