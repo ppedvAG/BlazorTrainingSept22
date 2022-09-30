@@ -1,0 +1,48 @@
+﻿@page "/JS"
+@using RazorClassLibrary1
+@inject IJSRuntime JsRuntime
+<h3>JSComponent</h3>
+<button @onclick="alert">alert</button>
+<br />
+<button @onclick="confirm">confirm</button>
+<br />
+<button @onclick="title">title</button>
+<br />
+<button @onclick="clipboard">clipboard</button>
+<br />
+<button @onclick="interop">interop</button>
+<br />
+
+
+@eingabe
+@code {
+    string eingabe;
+    void alert()
+    {
+        JsRuntime.InvokeVoidAsync("alert", "Hallo Welt");
+
+    }
+    async Task confirm()
+    {
+        eingabe = await JsRuntime.InvokeAsync<string>("prompt", "Eingabe");
+
+    }
+
+    void title()
+    {
+        JsRuntime.InvokeVoidAsync("eval", "document.title='TOOOOOOLLLL'");
+
+    }
+    void clipboard()
+    {
+        JsRuntime.InvokeVoidAsync("navigator.clipboard.writeText", "document.title='TOOOOOOLLLL'");
+
+    }
+    async Task interop()
+     {
+        var m = new ExampleJsInterop(JsRuntime);
+       eingabe=await m.Prompt("Library");
+       
+
+    }
+}
