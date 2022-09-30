@@ -1,7 +1,9 @@
 using BlazorTrainingSept22.Data;
+using BlazorTrainingSept22.Models;
 using BlazorTrainingSept22.Pages.Modul4;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Web;
+using Microsoft.EntityFrameworkCore;
 
 namespace BlazorTrainingSept22
 {
@@ -18,6 +20,8 @@ namespace BlazorTrainingSept22
             builder.Services.AddSingleton<ChatVM>();
             builder.Services.AddHttpClient();
             builder.Services.AddTransient<Demo>();
+            builder.Services.AddDbContext<NorthwindContext>(o =>
+            o.UseSqlServer(builder.Configuration.GetConnectionString("northwind")));
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.

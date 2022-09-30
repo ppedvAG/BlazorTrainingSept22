@@ -1,0 +1,15 @@
+﻿@page "/kunden"
+@using Models
+@inject NorthwindContext db
+<h3>Kunden</h3>
+<input @bind="Eingabe" @bind:event="oninput" />
+<ul>
+@foreach (var item in db.Customers.Where(x=>x.CompanyName.Contains(Eingabe)))
+{
+    <li>@item.CompanyName</li>
+}
+</ul>
+@code {
+    string Eingabe;
+    List<Customer> Liste;
+}
